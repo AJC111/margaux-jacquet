@@ -72,7 +72,7 @@ export default function CGV() {
                 Conformément au Code de la consommation, l’Acheteur dispose d’un délai de 14 jours pour exercer son droit de rétractation. Ce droit ne s’applique pas :
                 <br />– Aux produits numériques déjà téléchargés,
                 <br />– Aux services commencés à la demande de l’Acheteur avant la fin du délai de rétractation.
-                <br />Pour exercer ce droit, envoyer un email à <span className="italic">[adresse@email.com]</span>.
+                <br />Pour exercer ce droit, envoyer un email à <span className="italic">margojacq@gmail.com</span>.
               </p>
             </div>
 
@@ -94,7 +94,7 @@ export default function CGV() {
             <div>
               <h2 className="text-xl font-semibold">9. Données personnelles</h2>
               <p>
-                Les données sont utilisées uniquement pour la gestion des commandes. Conformément au RGPD, l’Acheteur peut exercer ses droits en écrivant à <span className="italic">[adresse@email.com]</span>.
+                Les données sont utilisées uniquement pour la gestion des commandes. Conformément au RGPD, l’Acheteur peut exercer ses droits en écrivant à <span className="italic">margojacq@gmail.com</span>.
               </p>
             </div>
 
@@ -110,7 +110,7 @@ export default function CGV() {
               <p>
                 Site édité par : Aimery Javoy-Corbin<br />
                 Adresse : 2 Kerjonc, 56490 Ménéac<br />
-                Email : <span className="italic">[adresse@email.com]</span><br />
+                Email : <span className="italic">aimery.javoy@gmail.com</span><br />
                 Hébergement : Vercel
               </p>
             </div>
