@@ -62,7 +62,7 @@ export default function CGV() {
               <p>
                 Produits physiques : expédiés à l’adresse indiquée par l’Acheteur. Les délais sont donnés à titre indicatif.
                 <br />Produits numériques : livrés par e-mail ou via une plateforme dédiée.
-                <br />Pour tout problème : contactez le Vendeur à l’adresse : <span className="italic">[ton email]</span>.
+                <br />Pour tout problème : contactez le Vendeur à l’adresse : <span className="italic">margojacq@gmail.com</span>.
               </p>
             </div>
 
