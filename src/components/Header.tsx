@@ -37,11 +37,11 @@ export default function Header() {
         duration: 0.2
       }
     },
-    open: (i) => ({
+    open: (custom: number) => ({
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.1,
+        delay: custom * 0.1,
         duration: 0.3,
         ease: "easeOut"
       }
@@ -65,7 +65,7 @@ export default function Header() {
 
   return (
     <>
-      {/* Header original conservé pour desktop */}
+      {/* Header desktop*/}
       <header className="bg-beige text-bleu shadow-md sticky top-0 z-50">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-6">
           <Link href="/" data-cursor="hover" className="flex items-center space-x-2">
@@ -80,14 +80,14 @@ export default function Header() {
             </div>
           </Link>
 
-          {/* Navigation Desktop - cachée sur mobile */}
+          {/* Navigation Desktop */}
           <nav className="hidden md:flex space-x-14 font-semibold self-end mb-4">
             <Link href="/a-propos" data-cursor="hover">À propos de moi</Link>
             <Link href="/prestations" data-cursor="hover">Prestations proposées</Link>
             <Link href="/contact" data-cursor="hover">Demande de contact</Link>
           </nav>
 
-          {/* Menu Burger - visible seulement sur mobile */}
+          {/* Menu Burger */}
           <motion.button
             className="md:hidden z-60 p-2 rounded-lg transition-colors duration-200"
             onClick={toggleMenu}
@@ -131,7 +131,7 @@ export default function Header() {
         </div>
       </header>
 
-      {/* Menu Mobile - visible seulement sur mobile */}
+      {/* Menu Mobile */}
       <AnimatePresence>
         {isMenuOpen && (
           <>
