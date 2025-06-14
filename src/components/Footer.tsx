@@ -23,7 +23,7 @@ export default function Footer() {
           </Link>{' '}
           · Réalisé par{' '}
           <a
-            href="https://aimery.fr"
+            href="http://aimery.fr"
             target="_blank"
             rel="noopener noreferrer"
             data-cursor="hover"

@@ -26,3 +26,21 @@ html, body, a, button, [data-cursor="hover"] {
 .animate-spin-slow {
   animation: spin-slow 2.5s linear infinite;
 }
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #FFD700;
+  border-radius: 9999px;
+  pointer-events: none;
+  animation: sparkle 1.1s ease-out forwards;
+  z-index: 9999;
+}
+
+@keyframes sparkle {
+  to {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
