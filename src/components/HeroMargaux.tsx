@@ -5,9 +5,9 @@ import { urlFor } from '@/lib/imageBuilder'
 import { motion } from 'framer-motion'
 
 export default function HeroMargaux({ photo }: { photo: any }) {
-  const dotCount = 82
-  const imageSize = 280
-  const ringOffset = 15
+  const dotCount = 82 // nombre de points orbitaux
+  const imageSize = 290 // éloignement des points orbitaux avec la photo
+  const ringOffset = 20 // décalage pour que les points ne soient pas collés à la photo
   const minRadius = imageSize / 2 + ringOffset
 
   return (
@@ -21,7 +21,7 @@ export default function HeroMargaux({ photo }: { photo: any }) {
         const x = Math.cos(rad) * radius
         const y = Math.sin(rad) * radius
         const size = 3 + Math.random() * 3
-        const opacity = 0.2 + Math.random() * 0.4
+        const opacity = 0.4 + Math.random() * 0.4
         const delay = Math.random() * 2
 
         return (
@@ -52,7 +52,7 @@ export default function HeroMargaux({ photo }: { photo: any }) {
         )
       })}
 
-      {/* Photo avec filtre */}
+      {/* Photo introduction */}
       <div className="relative w-full h-full rounded-full overflow-hidden z-10">
         <Image
           src={urlFor(photo).width(800).height(800).url()}
@@ -60,7 +60,7 @@ export default function HeroMargaux({ photo }: { photo: any }) {
           fill
           className="object-cover grayscale"
         />
-        <div className="absolute inset-0 bg-[#F4F1E8]/40 z-10" />
+        <div/>
       </div>
     </div>
   )

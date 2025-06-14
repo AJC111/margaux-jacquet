@@ -3,6 +3,16 @@ import { urlFor } from '@/lib/imageBuilder'
 import Image from 'next/image'
 import PrestationCard from '@/components/PrestationCard'
 import SplitTextBlock from '@/components/SplitTextBlock'
+import AvisCarousel from '@/components/AvisCarousel'
+
+interface AvisClient {
+  nom: string
+  profession?: string
+  photo?: any
+  commentaire: string
+  note?: number
+  date: string
+}
 
 interface PageAccueil {
   prenom?: string
@@ -21,7 +31,12 @@ interface PageAccueil {
   }
 }
 
-export default function Home({ page }: { page: PageAccueil }) {
+interface HomeProps {
+  page: PageAccueil
+  avisClients: AvisClient[]
+}
+
+export default function Home({ page, avisClients }: HomeProps) {
   return (
     <main className="min-h-screen bg-beige text-bleu font-sans">
 
@@ -55,7 +70,7 @@ export default function Home({ page }: { page: PageAccueil }) {
       {page.citation?.texte && (
         <section className="bg-[#FAF9F3] py-12 text-center">
           <SplitTextBlock
-            text={`“${page.citation.texte}”`}
+            text={`"${page.citation.texte}"`}
             as="blockquote"
             className="text-2xl italic text-bleu max-w-2xl mx-auto pl-6"
           />
@@ -63,6 +78,11 @@ export default function Home({ page }: { page: PageAccueil }) {
             <footer className="mt-4 text-sm text-bleu/70">— {page.citation.auteur}</footer>
           )}
         </section>
+      )}
+
+      {/* Avis Clients */}
+      {avisClients && avisClients.length > 0 && (
+        <AvisCarousel avis={avisClients} />
       )}
 
       {/* Prestations */}
@@ -88,22 +108,38 @@ export default function Home({ page }: { page: PageAccueil }) {
 }
 
 export async function getStaticProps() {
-  const page = await client.fetch(`*[_type == "pageAccueil"][0]{
-    prenom,
-    nom,
-    photo,
-    description,
-    citation,
-    prestations[]{
-      titre,
+  const [page, avisClients] = await Promise.all([
+    // Récupération des données de la page d'accueil
+    client.fetch(`*[_type == "pageAccueil"][0]{
+      prenom,
+      nom,
+      photo,
       description,
-      slug,
-      image
-    }
-  }`)
+      citation,
+      prestations[]{
+        titre,
+        description,
+        slug,
+        image
+      }
+    }`),
+    
+    // Récupération des avis clients visibles, triés par ordre puis par date
+    client.fetch(`*[_type == "avisClient" && visible == true] | order(ordre asc, date desc) {
+      nom,
+      profession,
+      photo,
+      commentaire,
+      note,
+      date
+    }`)
+  ])
 
   return {
-    props: { page },
+    props: { 
+      page: page || {},
+      avisClients: avisClients || []
+    },
     revalidate: 60,
   }
 }

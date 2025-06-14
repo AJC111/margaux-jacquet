@@ -24,7 +24,7 @@ export default function PrestationsPage({ prestations }: { prestations: Prestati
     setTimeout(() => {
       const el = document.querySelector(hash)
       if (el) {
-        const yOffset = -80 // hauteur de ton header fixe
+        const yOffset = -80
         const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset
         window.scrollTo({ top: y, behavior: 'smooth' })
       }
