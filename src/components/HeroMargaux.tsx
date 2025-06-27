@@ -3,12 +3,24 @@
 import Image from 'next/image'
 import { urlFor } from '@/lib/imageBuilder'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 
 export default function HeroMargaux({ photo }: { photo: any }) {
-  const dotCount = 82 // nombre de points orbitaux
-  const imageSize = 290 // éloignement des points orbitaux avec la photo
-  const ringOffset = 20 // décalage pour que les points ne soient pas collés à la photo
-  const minRadius = imageSize / 2 + ringOffset
+  const [radiusOffset, setRadiusOffset] = useState(20) // valeur par défaut desktop
+
+  // Réduire l'éloignement des points orbitaux sur mobile
+  useEffect(() => {
+    const updateRadius = () => {
+      setRadiusOffset(window.innerWidth < 768 ? 1 : 20)
+    }
+    updateRadius()
+    window.addEventListener('resize', updateRadius)
+    return () => window.removeEventListener('resize', updateRadius)
+  }, [])
+
+  const dotCount = 82
+  const imageSize = 290
+  const minRadius = imageSize / 2 + radiusOffset
 
   return (
     <div className="relative w-[220px] h-[220px] sm:w-[240px] sm:h-[240px] md:w-[260px] md:h-[260px] lg:w-[280px] lg:h-[280px]">

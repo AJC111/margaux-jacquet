@@ -29,29 +29,23 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
     <main className="min-h-screen bg-beige text-bleu font-sans">
 
       {/* SECTION : INTRODUCTION */}
-        <section id="parcours" className="w-full px-6 py-24 bg-[#FAF9F3]">
-  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-center gap-12">
+<section id="intro" className="w-full px-6 py-24 bg-[#FAF9F3] overflow-x-clip">
+  <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-16 md:gap-12">
+    
     {/* Colonne gauche : Hero bien centré verticalement */}
-    <div className="w-full md:w-[40%] flex justify-center md:justify-start md:items-center">
-      <div className="py-6 md:py-8 flex items-center">
+    <div className="w-full md:w-[40%] flex justify-center md:justify-start relative z-10">
+      <div className="pt-6 pb-10 md:py-8">
         <HeroMargaux photo={data.photo} />
       </div>
     </div>
 
     {/* Colonne droite : texte */}
-    <div className="w-full md:w-[60%] space-y-6">
-      {/* 
-
-      <h2 className="text-2xl font-semibold text-bleu text-center md:text-left">
-        Presentation
-      </h2> 
-
-      */}
-
+    <div className="w-full md:w-[60%] space-y-6 z-10">
       <PortableTextBlock value={data.intro} />
     </div>
   </div>
 </section>
+
 
     {/* SECTION : PARCOURS */}
       <section className="w-full py-20 px-6 bg-[#F4F1E8]">
