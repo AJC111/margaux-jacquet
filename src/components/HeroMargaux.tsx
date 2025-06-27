@@ -60,7 +60,6 @@ export default function HeroMargaux({ photo }: { photo: any }) {
           fill
           className="object-cover grayscale"
         />
-        <div/>
       </div>
     </div>
   )

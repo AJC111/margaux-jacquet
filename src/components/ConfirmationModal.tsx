@@ -11,7 +11,7 @@ interface Props {
 export default function ConfirmationModal({ isOpen, onClose }: Props) {
   useEffect(() => {
     if (isOpen) {
-      const audio = new Audio('/sounds/confirmation.mp3')
+      const audio = new Audio('/confirmation.mp3')
       audio.play()
       const timer = setTimeout(() => onClose(), 6000)
       return () => clearTimeout(timer)
