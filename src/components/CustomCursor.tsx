@@ -131,69 +131,70 @@ export default function CustomCursor() {
   }, [cursorX, cursorY, hovering])
 
   return (
-    <>
-      {/* Curseur central */}
-      <motion.div
-        className="fixed z-[9999] pointer-events-none"
-        style={{ translateX: x, translateY: y, x: '-50%', y: '-50%' }}
+  <div className="hidden sm:block">
+    {/* Curseur central */}
+    <motion.div
+      className="fixed z-[9999] pointer-events-none"
+      style={{ translateX: x, translateY: y, x: '-50%', y: '-50%' }}
+    >
+      <div
+        className={`relative flex items-center justify-center rounded-full transition-all duration-200 ${
+          hovering ? 'w-7 h-7' : 'w-2 h-2 bg-bleu'
+        }`}
       >
-        <div
-          className={`relative flex items-center justify-center rounded-full transition-all duration-200 ${
-            hovering ? 'w-7 h-7' : 'w-2 h-2 bg-bleu'
-          }`}
-        >
-          {hovering && (
-            <>
-              <div className="absolute w-full h-full rounded-full border-2 border-yellow-400" />
-              <div className="absolute animate-spin-slow w-[150%] h-[150%]">
-                <svg viewBox="0 0 100 100" className="w-full h-full">
-                  {[...Array(10)].map((_, i) => {
-                    const a = (i * 360) / 10
-                    const rad = (a * Math.PI) / 180
-                    const x = 50 + 38 * Math.cos(rad)
-                    const y = 50 + 38 * Math.sin(rad)
-                    const dx = 6 * Math.cos(rad)
-                    const dy = 6 * Math.sin(rad)
-                    return (
-                      <line
-                        key={i}
-                        x1={x}
-                        y1={y}
-                        x2={x + dx}
-                        y2={y + dy}
-                        stroke="#FFD700"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                      />
-                    )
-                  })}
-                </svg>
-              </div>
-            </>
-          )}
-        </div>
-      </motion.div>
+        {hovering && (
+          <>
+            <div className="absolute w-full h-full rounded-full border-2 border-yellow-400" />
+            <div className="absolute animate-spin-slow w-[150%] h-[150%]">
+              <svg viewBox="0 0 100 100" className="w-full h-full">
+                {[...Array(10)].map((_, i) => {
+                  const a = (i * 360) / 10
+                  const rad = (a * Math.PI) / 180
+                  const x = 50 + 38 * Math.cos(rad)
+                  const y = 50 + 38 * Math.sin(rad)
+                  const dx = 6 * Math.cos(rad)
+                  const dy = 6 * Math.sin(rad)
+                  return (
+                    <line
+                      key={i}
+                      x1={x}
+                      y1={y}
+                      x2={x + dx}
+                      y2={y + dy}
+                      stroke="#FFD700"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                    />
+                  )
+                })}
+              </svg>
+            </div>
+          </>
+        )}
+      </div>
+    </motion.div>
 
-      {/* Objets orbitaux */}
-      {SYMBOLS.map((symbol, i) => (
-        <motion.div
-          key={symbol.id}
-          className="fixed z-[9998] pointer-events-none"
-          style={{
-            translateX: springPositions[i].x,
-            translateY: springPositions[i].y,
-            width: symbol.size,
-            height: symbol.size,
-          }}
-          animate={{
-            opacity: hovering ? 0 : 1,
-            scale: hovering ? 0.2 : 1,
-          }}
-          transition={{ duration: 0.4, ease: 'easeInOut' }}
-        >
-          {symbol.svg}
-        </motion.div>
-      ))}
-    </>
-  )
+    {/* Objets orbitaux */}
+    {SYMBOLS.map((symbol, i) => (
+      <motion.div
+        key={symbol.id}
+        className="fixed z-[9998] pointer-events-none"
+        style={{
+          translateX: springPositions[i].x,
+          translateY: springPositions[i].y,
+          width: symbol.size,
+          height: symbol.size,
+        }}
+        animate={{
+          opacity: hovering ? 0 : 1,
+          scale: hovering ? 0.2 : 1,
+        }}
+        transition={{ duration: 0.4, ease: 'easeInOut' }}
+      >
+        {symbol.svg}
+      </motion.div>
+    ))}
+  </div>
+)
+
 }
