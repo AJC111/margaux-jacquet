@@ -25,7 +25,7 @@ export default function TouchParticles() {
     const colors = ['#E9D5A1', '#B87333', '#FFD700', '#FBEEC1', '#ECC440', '#FFFA8A']
 
     const createExplosion = (x: number, y: number) => {
-      for (let i = 0; i < 48; i++) {
+      for (let i = 0; i < 52; i++) {
         const particle = document.createElement('div')
         particle.className = 'touch-particle'
 
@@ -39,8 +39,8 @@ export default function TouchParticles() {
         particle.style.height = `${size}px`
 
         // Direction aléatoire
-        const angle = Math.random() * Math.PI * 3
-        const speed = 10 + Math.random() * 40
+        const angle = Math.random() * Math.PI * 6
+        const speed = 20 + Math.random() * 40
         const offsetX = Math.cos(angle) * speed
         const offsetY = Math.sin(angle) * speed
 
