@@ -6,6 +6,7 @@ import { client } from '@/lib/sanity'
 import { urlFor } from '@/lib/imageBuilder'
 import PortableTextBlock from '@/components/PortableTextBlock'
 import HeroMargaux from '@/components/HeroMargaux'
+import Head from 'next/head'
 
 type DonneesAPropos = {
   titre: string
@@ -27,6 +28,15 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
 
   return (
     <main className="min-h-screen bg-beige text-bleu font-sans">
+      
+      <Head>
+        <title>A propos - Margaux Jacquet</title>
+        <meta name="description" content="Découvrez moi ici, mon parcours, mes motivations, mes valeurs, ..." />
+        <meta property="og:title" content="A propos - Margaux Jacquet" />
+        <meta property="og:description" content="Découvrez moi ici, mon parcours, mes motivations, mes valeurs, ..." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.margaux-jacquet.com/a-propos" />
+      </Head>
 
       {/* SECTION : INTRODUCTION */}
 <section id="intro" className="w-full px-6 py-24 bg-[#FAF9F3] overflow-x-clip">

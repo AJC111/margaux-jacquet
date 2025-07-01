@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useRef } from 'react'
+import Head from 'next/head'
 
 export default function PageContact() {
   const [formData, setFormData] = useState({
@@ -67,93 +68,103 @@ export default function PageContact() {
   }
 
   return (
-    <main className="min-h-screen bg-[#FAF9F3] text-bleu px-6 pt-14 pb-16 flex items-center justify-center relative">
-      <div id="particles-container" className="absolute inset-0 pointer-events-none z-40" />
+    <>
+      <Head>
+        <title>Contact - Margaux Jacquet</title>
+        <meta name="description" content="Contactez moi via ce formulaire." />
+        <meta property="og:title" content="Contact - Margaux Jacquet" />
+        <meta property="og:description" content="Un formulaire simple pour m'exprimer votre demande concernant une prestation." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.margaux-jacquet.com/contact" />
+      </Head>
+      <main className="min-h-screen bg-[#FAF9F3] text-bleu px-6 pt-14 pb-16 flex items-center justify-center relative">
+        <div id="particles-container" className="absolute inset-0 pointer-events-none z-40" />
 
-      <AnimatePresence>
-        {envoye && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 flex items-center justify-center z-50 bg-black/10 backdrop-blur-sm"
-          >
+        <AnimatePresence>
+          {envoye && (
             <motion.div
-              initial={{ scale: 0.85, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="bg-white text-bleu px-6 py-5 rounded-2xl shadow-xl border border-[#DDD6C9] max-w-md text-center relative"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 flex items-center justify-center z-50 bg-black/10 backdrop-blur-sm"
             >
-              <p className="text-lg font-medium">
-                ✨ Merci pour votre message, je vous répondrai rapidement !
-              </p>
-              <button
-                onClick={closePopup}
-                className="mt-4 text-sm text-[#555] underline hover:text-bleu transition"
+              <motion.div
+                initial={{ scale: 0.85, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-white text-bleu px-6 py-5 rounded-2xl shadow-xl border border-[#DDD6C9] max-w-md text-center relative"
               >
-                Fermer
-              </button>
+                <p className="text-lg font-medium">
+                  ✨ Merci pour votre message, je vous répondrai rapidement !
+                </p>
+                <button
+                  onClick={closePopup}
+                  className="mt-4 text-sm text-[#555] underline hover:text-bleu transition"
+                >
+                  Fermer
+                </button>
+              </motion.div>
             </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          )}
+        </AnimatePresence>
 
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="w-full max-w-3xl space-y-12 relative z-10"
-      >
-        <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-4xl sm:text-5xl font-tanpearl text-center mb-12"
+          transition={{ duration: 0.8 }}
+          className="w-full max-w-3xl space-y-12 relative z-10"
         >
-          Pour me contacter
-        </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl sm:text-5xl font-tanpearl text-center mb-12"
+          >
+            Pour me contacter
+          </motion.h1>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Champ label="Nom" name="nom" value={formData.nom} onChange={handleChange} required />
-            <Champ label="Prénom" name="prenom" value={formData.prenom} onChange={handleChange} required />
-          </div>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Champ label="Nom" name="nom" value={formData.nom} onChange={handleChange} required />
+              <Champ label="Prénom" name="prenom" value={formData.prenom} onChange={handleChange} required />
+            </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <Champ label="Email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <Champ label="Email" name="email" type="email" value={formData.email} onChange={handleChange} required />
+              <Champ
+                label="Téléphone"
+                name="telephone"
+                type="tel"
+                pattern="\d{10}"
+                value={formData.telephone}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <Champ label="Sujet" name="sujet" placeholder="(optionnel)" value={formData.sujet} onChange={handleChange} />
             <Champ
-              label="Téléphone"
-              name="telephone"
-              type="tel"
-              pattern="\d{10}"
-              value={formData.telephone}
+              label="Message"
+              name="message"
+              textarea
+              value={formData.message}
               onChange={handleChange}
               required
             />
-          </div>
 
-          <Champ label="Sujet" name="sujet" placeholder="(optionnel)" value={formData.sujet} onChange={handleChange} />
-          <Champ
-            label="Message"
-            name="message"
-            textarea
-            value={formData.message}
-            onChange={handleChange}
-            required
-          />
-
-          <div className="pt-6 text-center">
-            <button
-              type="submit"
-              className="bg-[#101F44] text-white px-8 py-3 rounded-full hover:bg-[#1c2a61] transition-all duration-300 text-lg tracking-wide"
-            >
-              Envoyer
-            </button>
-          </div>
-        </form>
-      </motion.div>
-    </main>
+            <div className="pt-6 text-center">
+              <button
+                type="submit"
+                className="bg-[#101F44] text-white px-8 py-3 rounded-full hover:bg-[#1c2a61] transition-all duration-300 text-lg tracking-wide"
+              >
+                Envoyer
+              </button>
+            </div>
+          </form>
+        </motion.div>
+      </main>
+    </>
   )
 }
 
