@@ -34,13 +34,13 @@ export default function TouchParticles() {
         particle.style.backgroundColor = color
 
         // Taille aléatoire (1 à 3 px)
-        const size = 1 + Math.random() * 3
+        const size = 1 + Math.random() * 2
         particle.style.width = `${size}px`
         particle.style.height = `${size}px`
 
         // Direction aléatoire
-        const angle = Math.random() * Math.PI * 2
-        const speed = 40 + Math.random() * 40
+        const angle = Math.random() * Math.PI * 3
+        const speed = 10 + Math.random() * 40
         const offsetX = Math.cos(angle) * speed
         const offsetY = Math.sin(angle) * speed
 
