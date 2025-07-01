@@ -49,14 +49,17 @@ export default function PrestationsPage({ prestations }: { prestations: Prestati
         >
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row gap-10 items-start">
             {presta.image && (
-              <div className="relative w-full md:w-[40%] flex-shrink-0 shadow-lg rounded-lg overflow-hidden">
-                <Image
-                  src={urlFor(presta.image).width(800).height(600).url()}
-                  alt={presta.titre}
-                  width={800}
-                  height={600}
-                  className="object-cover w-full h-full rounded-lg"
-                />
+              <div className="w-full md:w-[40%] flex-shrink-0">
+                <div className="relative w-full overflow-hidden rounded-[8px] shadow-lg">
+                  <Image
+                    src={urlFor(presta.image).url()}
+                    alt={presta.titre}
+                    width={800}
+                    height={1000}
+                    className="w-full h-auto object-contain rounded-[8px]"
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                  />
+                </div>
               </div>
             )}
 

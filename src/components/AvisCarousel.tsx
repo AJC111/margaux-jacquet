@@ -92,22 +92,22 @@ export default function AvisCarousel({ avis }: AvisCarouselProps) {
 
         <div className="relative">
           {/* Main carousel container */}
-          <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl">
+          <div className="relative overflow-hidden rounded-2xl bg-white shadow-2xl flex items-center justify-center min-h-[420px]">
             <div 
-              className="flex transition-transform duration-700 ease-in-out"
+              className="flex transition-transform duration-700 ease-in-out w-full"
               style={{ transform: `translateX(-${currentIndex * 100}%)` }}
             >
               {avis.map((avis, index) => (
-                <div key={index} className="w-full flex-shrink-0">
-                  <div className="p-12 md:p-16">
-                    <div className="max-w-4xl mx-auto">
+                <div key={index} className="w-full flex-shrink-0 flex items-center justify-center">
+                  <div className="p-12 md:p-16 w-full">
+                    <div className="max-w-4xl mx-auto flex flex-col justify-center items-center h-full">
                       {/* Quote icon */}
                       <div className="flex justify-center mb-8">
                         <Quote className="w-12 h-12 text-bleu/20" />
                       </div>
 
                       {/* Testimonial text */}
-                      <blockquote className="text-xl md:text-2xl text-center text-bleu leading-relaxed mb-8 italic">
+                      <blockquote className="text-base md:text-lg text-center text-bleu leading-relaxed mb-8 italic">
                         {avis.commentaire}
                       </blockquote>
 

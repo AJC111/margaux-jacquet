@@ -4,6 +4,7 @@ import Image from 'next/image'
 import PrestationCard from '@/components/PrestationCard'
 import SplitTextBlock from '@/components/SplitTextBlock'
 import AvisCarousel from '@/components/AvisCarousel'
+import PhotoStackCarousel from '@/components/PhotoStackCarousel'
 
 interface AvisClient {
   nom: string
@@ -12,6 +13,12 @@ interface AvisClient {
   commentaire: string
   note?: number
   date: string
+}
+
+interface CarouselImage {
+  asset: any
+  alt?: string
+  caption?: string
 }
 
 interface PageAccueil {
@@ -34,14 +41,15 @@ interface PageAccueil {
 interface HomeProps {
   page: PageAccueil
   avisClients: AvisClient[]
+  carouselImages: CarouselImage[]
 }
 
-export default function Home({ page, avisClients }: HomeProps) {
+export default function Home({ page, avisClients, carouselImages }: HomeProps) {
   return (
     <main className="min-h-screen bg-beige text-bleu font-sans">
 
       {/* Présentation */}
-      <section className="w-full bg-[#F4F1E8] py-24">
+      <section className="w-full bg-[#FAF9F3] py-24">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-10">
             {page.photo && (
@@ -65,6 +73,11 @@ export default function Home({ page, avisClients }: HomeProps) {
           </div>
         </div>
       </section>
+
+      {/* Carrousel d’images */}
+      {carouselImages && carouselImages.length > 0 && (
+        <PhotoStackCarousel images={carouselImages} />
+      )}
 
       {/* Citation */}
       {page.citation?.texte && (
@@ -108,8 +121,8 @@ export default function Home({ page, avisClients }: HomeProps) {
 }
 
 export async function getStaticProps() {
-  const [page, avisClients] = await Promise.all([
-    // Récupération des données de la page d'accueil
+  const [page, avisClients, carouselImages] = await Promise.all([
+    // Page d'accueil
     client.fetch(`*[_type == "pageAccueil"][0]{
       prenom,
       nom,
@@ -123,8 +136,8 @@ export async function getStaticProps() {
         image
       }
     }`),
-    
-    // Récupération des avis clients visibles, triés par ordre puis par date
+
+    // Avis clients visibles
     client.fetch(`*[_type == "avisClient" && visible == true] | order(ordre asc, date desc) {
       nom,
       profession,
@@ -132,13 +145,21 @@ export async function getStaticProps() {
       commentaire,
       note,
       date
+    }`),
+
+    // Images du carrousel
+    client.fetch(`*[_type == "carouselImage"] | order(_createdAt asc) {
+      asset,
+      alt,
+      caption
     }`)
   ])
 
   return {
-    props: { 
+    props: {
       page: page || {},
-      avisClients: avisClients || []
+      avisClients: avisClients || [],
+      carouselImages: carouselImages || [],
     },
     revalidate: 60,
   }
