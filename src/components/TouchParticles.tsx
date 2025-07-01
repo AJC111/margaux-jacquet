@@ -22,12 +22,25 @@ export default function TouchParticles() {
     const container = containerRef.current
     if (!container) return
 
+    const colors = ['#E9D5A1', '#B87333', '#FFD700', '#FBEEC1', '#ECC440', '#FFFA8A']
+
     const createExplosion = (x: number, y: number) => {
-      for (let i = 0; i < 34; i++) {
+      for (let i = 0; i < 48; i++) {
         const particle = document.createElement('div')
         particle.className = 'touch-particle'
+
+        // Couleur aléatoire
+        const color = colors[Math.floor(Math.random() * colors.length)]
+        particle.style.backgroundColor = color
+
+        // Taille aléatoire (1 à 3 px)
+        const size = 1 + Math.random() * 3
+        particle.style.width = `${size}px`
+        particle.style.height = `${size}px`
+
+        // Direction aléatoire
         const angle = Math.random() * Math.PI * 2
-        const speed = 15 + Math.random() * 40
+        const speed = 40 + Math.random() * 40
         const offsetX = Math.cos(angle) * speed
         const offsetY = Math.sin(angle) * speed
 
@@ -37,10 +50,7 @@ export default function TouchParticles() {
         particle.style.setProperty('--y', `${offsetY}px`)
 
         container.appendChild(particle)
-
-        setTimeout(() => {
-          container.removeChild(particle)
-        }, 800)
+        setTimeout(() => container.removeChild(particle), 800)
       }
     }
 
@@ -49,9 +59,7 @@ export default function TouchParticles() {
       createExplosion(touch.clientX, touch.clientY)
     }
 
-    // 👉 Seulement sur écran tactile
     window.addEventListener('touchstart', handleTouch)
-
     return () => {
       window.removeEventListener('touchstart', handleTouch)
     }
