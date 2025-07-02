@@ -84,6 +84,7 @@ export default function Header() {
           <nav className="hidden md:flex space-x-14 font-semibold self-end mb-4">
             <Link href="/a-propos" data-cursor="hover">À propos de moi</Link>
             <Link href="/prestations" data-cursor="hover">Prestations proposées</Link>
+            <Link href="/reservation" data-cursor="hover">Prendre rendez-vous</Link>
             <Link href="/contact" data-cursor="hover">Demande de contact</Link>
           </nav>
 
@@ -160,6 +161,7 @@ export default function Header() {
                   {[
                     { href: "/a-propos", label: "À propos de moi" },
                     { href: "/prestations", label: "Prestations proposées" },
+                    { href: "/reservation", label: "Prendre rendez-vous" },
                     { href: "/contact", label: "Demande de contact" }
                   ].map((item, index) => (
                     <motion.div

@@ -27,6 +27,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         <hr style="margin:24px 0;border:none;border-top:1px solid #eee;" />
         <p><strong>Message :</strong><br/>${message}</p>
       </div>
+      <div style="margin-top:32px;text-align:center;">
+            <a href="mailto:${email}" style="display:inline-block;padding:12px 24px;background:#101F44;color:white;text-decoration:none;border-radius:20px;font-weight:bold;">Répondre au client</a>
+      </div>
       <div style="text-align:center;font-size:13px;color:#888;margin-top:40px;padding-top:20px;border-top:1px solid #eee">
         <p>Ce message provient de ton site <strong>margaux-jacquet.com</strong></p>
       </div>

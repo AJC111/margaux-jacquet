@@ -81,7 +81,7 @@ export default function PrestationsPage({ prestations }: { prestations: Prestati
                 </div>
               )}
 
-              <div className="flex-1 space-y-4">
+              <div className="flex-1 space-y-4 text-justify">
                 <h2 className="text-3xl font-bold">{presta.titre}</h2>
                 <p className="text-md font-medium text-bleu/70">Prix : {presta.prix} €</p>
                 <p className="text-md leading-relaxed whitespace-pre-line">{presta.description}</p>

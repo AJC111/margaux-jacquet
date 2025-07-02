@@ -78,7 +78,7 @@ export default function Home({ page, avisClients, carouselImages }: HomeProps) {
                 <SplitTextBlock
                   text={page.description}
                   as="p"
-                  className="text-lg leading-relaxed whitespace-pre-line"
+                  className="text-lg leading-relaxed whitespace-pre-line text-justify"
                 />
               </div>
             </div>

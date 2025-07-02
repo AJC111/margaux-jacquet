@@ -50,7 +50,7 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
     </div>
 
     {/* Colonne droite : texte */}
-    <div className="w-full md:w-[60%] space-y-6 z-10">
+    <div className="w-full md:w-[60%] space-y-6 z-10 text-justify">
       <PortableTextBlock value={data.intro} />
     </div>
   </div>
@@ -58,7 +58,7 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
 
 
     {/* SECTION : PARCOURS */}
-      <section className="w-full py-20 px-6 bg-[#F4F1E8]">
+      <section className="w-full py-20 px-6 bg-[#F4F1E8] text-justify">
         <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-2xl font-semibold text-center">Mon parcours</h2>
           <PortableTextBlock value={data.parcours} />
@@ -66,7 +66,7 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
       </section>
 
       {/* SECTION : MOTIVATION */}
-      <section className="w-full py-20 px-6 bg-[#FAF9F3]">
+      <section className="w-full py-20 px-6 bg-[#FAF9F3] text-justify">
         <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-2xl font-semibold text-center">Pourquoi ce métier ?</h2>
           <PortableTextBlock value={data.motivation} />
@@ -74,7 +74,7 @@ export default function AProposPage({ data }: { data: DonneesAPropos }) {
       </section>
 
       {/* SECTION : VALEURS */}
-      <section className="w-full py-20 px-6 bg-[#F4F1E8]">
+      <section className="w-full py-20 px-6 bg-[#F4F1E8] text-justify">
         <div className="max-w-4xl mx-auto space-y-6">
           <h2 className="text-2xl font-semibold text-center">Mes valeurs et mon approche</h2>
           <PortableTextBlock value={data.valeurs} />

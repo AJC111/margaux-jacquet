@@ -18,6 +18,7 @@
     "motion-plus": "^0.1.9",
     "next": "15.3.2",
     "react": "^19.0.0",
+    "react-calendar": "^6.0.0",
     "react-dom": "^19.0.0",
     "resend": "^4.5.2",
     "sib-api-v3-sdk": "^8.5.0"

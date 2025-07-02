@@ -12,7 +12,7 @@ export default function CGV() {
         <div className="max-w-4xl mx-auto space-y-12">
           <h1 className="text-3xl md:text-5xl font-bold text-center">Conditions Générales de Vente</h1>
 
-          <section className="space-y-8 text-[1.05rem] leading-relaxed">
+          <section className="space-y-8 text-[1.05rem] leading-relaxed text-justify">
             <div>
               <h2 className="text-xl font-semibold">Préambule</h2>
               <p>
