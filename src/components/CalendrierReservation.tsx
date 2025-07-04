@@ -11,7 +11,7 @@ type Props = {
   onDateSelected: (date: string) => void
 }
 
-// Fonction utilitaire pour convertir une date en format YYYY-MM-DD en local (évite UTC)
+// Même fonction que dans Sanity pour corriger le bug UTC
 const getLocalISODate = (date: Date) => {
   const year = date.getFullYear()
   const month = String(date.getMonth() + 1).padStart(2, '0')
