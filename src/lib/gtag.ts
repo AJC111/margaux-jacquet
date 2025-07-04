@@ -2,10 +2,16 @@ export const GA_TRACKING_ID = 'G-D3DD9KFEW3'
 
 // Suivi des pages
 export const pageview = (url: string) => {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
-    (window as any).gtag('config', GA_TRACKING_ID, {
-      page_path: url,
-    })
+  if (typeof window !== 'undefined') {
+    const win = window as typeof window & {
+      gtag: (...args: any[]) => void
+    }
+
+    if (typeof win.gtag === 'function') {
+      win.gtag('config', GA_TRACKING_ID, {
+        page_path: url,
+      })
+    }
   }
 }
 
@@ -21,11 +27,17 @@ export const event = ({
   label: string
   value: number
 }) => {
-  if (typeof window !== 'undefined' && 'gtag' in window) {
-    (window as any).gtag('event', action, {
-      event_category: category,
-      event_label: label,
-      value,
-    })
+  if (typeof window !== 'undefined') {
+    const win = window as typeof window & {
+      gtag: (...args: any[]) => void
+    }
+
+    if (typeof win.gtag === 'function') {
+      win.gtag('event', action, {
+        event_category: category,
+        event_label: label,
+        value,
+      })
+    }
   }
 }
