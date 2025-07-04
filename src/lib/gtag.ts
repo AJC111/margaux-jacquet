@@ -1,3 +1,10 @@
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void
+  }
+}
+export {}
+
 export const GA_TRACKING_ID = 'G-D3DD9KFEW3'
 
 // Suivi des pages
